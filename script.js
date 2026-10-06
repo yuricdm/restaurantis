@@ -1,4 +1,3 @@
-```javascript
 let pedido = [];
 
 function adicionar(nome, preco) {
@@ -14,6 +13,10 @@ function atualizarPedido() {
     const lista = document.getElementById("lista");
     const total = document.getElementById("total");
 
+    if (!lista || !total) {
+        return;
+    }
+
     lista.innerHTML = "";
 
     let valorTotal = 0;
@@ -24,8 +27,12 @@ function atualizarPedido() {
 
         lista.innerHTML += `
             <div class="item-pedido">
-                ${item.nome} - R$ ${item.preco.toFixed(2).replace(".", ",")}
-                <button onclick="remover(${index})">Remover</button>
+                <strong>${item.nome}</strong>
+                - R$ ${item.preco.toFixed(2).replace(".", ",")}
+
+                <button onclick="remover(${index})">
+                    Remover
+                </button>
             </div>
         `;
     });
@@ -49,20 +56,20 @@ function enviarPedido() {
         return;
     }
 
-    const nome = document.getElementById("nome").value;
-    const telefone = document.getElementById("telefone").value;
-    const endereco = document.getElementById("endereco").value;
+    const nome = document.getElementById("nome").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+    const endereco = document.getElementById("endereco").value.trim();
     const pagamento = document.getElementById("pagamento").value;
-    const observacao = document.getElementById("observacao").value;
+    const observacao = document.getElementById("observacao").value.trim();
 
     if (nome === "" || telefone === "" || endereco === "") {
         alert("Preencha nome, telefone e endereço.");
         return;
     }
 
-    let mensagem = "Olá! Quero fazer um pedido.%0A%0A";
+    let mensagem = "Olá! Quero fazer um pedido.\n\n";
 
-    mensagem += "🍔 PEDIDO:%0A";
+    mensagem += "🍔 PEDIDO:\n";
 
     let total = 0;
 
@@ -73,29 +80,35 @@ function enviarPedido() {
             item.nome +
             " - R$ " +
             item.preco.toFixed(2).replace(".", ",") +
-            "%0A";
+            "\n";
 
         total += item.preco;
     });
 
     mensagem +=
-        "%0A💰 Total: R$ " +
+        "\n💰 Total: R$ " +
         total.toFixed(2).replace(".", ",") +
-        "%0A%0A";
+        "\n\n";
 
-    mensagem += "👤 Nome: " + nome + "%0A";
-    mensagem += "📱 Telefone: " + telefone + "%0A";
-    mensagem += "📍 Endereço: " + endereco + "%0A";
-    mensagem += "💳 Pagamento: " + pagamento + "%0A";
-    mensagem += "📝 Observação: " + observacao;
+    mensagem += "👤 Nome: " + nome + "\n";
+    mensagem += "📱 Telefone: " + telefone + "\n";
+    mensagem += "📍 Endereço: " + endereco + "\n";
+    mensagem += "💳 Pagamento: " + pagamento + "\n";
+    mensagem += "📝 Observação: " + (observacao || "Nenhuma");
 
     const numero = "5553999999999";
 
-    window.open(
-        "https://wa.me/" + numero + "?text=" + mensagem,
-        "_blank"
-    );
+    const url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        encodeURIComponent(mensagem);
+
+    window.open(url, "_blank");
 }
 
-atualizarPedido();
-```
+
+// Aguarda o HTML carregar antes de atualizar o pedido
+document.addEventListener("DOMContentLoaded", function() {
+    atualizarPedido();
+});
