@@ -1,171 +1,188 @@
+
 let pedido = [];
 
-let total = 0;
-
-
-// ADICIONAR PRODUTO
 function adicionar(nome, preco) {
 
-    pedido.push({
-        nome: nome,
-        preco: preco
-    });
+    const produtoExistente = pedido.find(
+        item => item.nome === nome
+    );
 
-    total += preco;
+    if (produtoExistente) {
+        produtoExistente.quantidade++;
+    } else {
+        pedido.push({
+            nome: nome,
+            preco: preco,
+            quantidade: 1
+        });
+    }
 
-    mostrarPedido();
+    atualizarPedido();
 }
 
 
-// MOSTRAR PEDIDO
-function mostrarPedido() {
+function remover(nome) {
 
-    const lista = document.getElementById("lista");
+    const produto = pedido.find(
+        item => item.nome === nome
+    );
 
-    lista.innerHTML = "";
+    if (!produto) {
+        return;
+    }
+
+    produto.quantidade--;
+
+    if (produto.quantidade <= 0) {
+        pedido = pedido.filter(
+            item => item.nome !== nome
+        );
+    }
+
+    atualizarPedido();
+}
 
 
-    pedido.forEach(function(item, index) {
+function calcularTotal() {
 
-        lista.innerHTML += `
-            <div class="item-pedido">
-                ${item.nome} - R$ ${item.preco.toFixed(2).replace(".", ",")}
-            </div>
-        `;
+    let total = 0;
 
+    pedido.forEach(function(item) {
+        total += item.preco * item.quantidade;
     });
 
+    return total;
+}
+
+
+function atualizarPedido() {
+
+    const lista = document.getElementById("lista");
+    const totalElemento = document.getElementById("total");
+
+    lista.innerHTML = "";
 
     if (pedido.length === 0) {
 
         lista.innerHTML = "Nenhum produto adicionado.";
-
-    }
-
-
-    document.getElementById("total").innerText =
-        total.toFixed(2).replace(".", ",");
-
-}
-
-
-// ENVIAR PEDIDO PELO WHATSAPP
-function enviarPedido() {
-
-    if (pedido.length === 0) {
-
-        alert("Adicione algum produto!");
+        totalElemento.innerText = "0,00";
 
         return;
     }
 
+    pedido.forEach(function(item) {
+
+        const subtotal =
+            item.preco * item.quantidade;
+
+        const div = document.createElement("div");
+
+        div.classList.add("item-pedido");
+
+        div.innerHTML = `
+            <strong>${item.nome}</strong>
+            <br>
+            Quantidade: ${item.quantidade}
+            <br>
+            R$ ${subtotal.toFixed(2).replace(".", ",")}
+            <br>
+
+            <button
+                class="botao-remover"
+                onclick="remover('${item.nome}')">
+                − Remover
+            </button>
+
+            <hr>
+        `;
+
+        lista.appendChild(div);
+    });
+
+    const total = calcularTotal();
+
+    totalElemento.innerText =
+        total.toFixed(2).replace(".", ",");
+}
+
+
+function enviarPedido() {
+
+    if (pedido.length === 0) {
+        alert("Adicione algum produto ao pedido!");
+        return;
+    }
 
     const nome =
         document.getElementById("nome").value.trim();
 
-
     const telefone =
         document.getElementById("telefone").value.trim();
-
 
     const endereco =
         document.getElementById("endereco").value.trim();
 
-
     const pagamento =
         document.getElementById("pagamento").value;
-
 
     const observacao =
         document.getElementById("observacao").value.trim();
 
-
     if (nome === "") {
-
         alert("Digite seu nome.");
-
+        document.getElementById("nome").focus();
         return;
     }
-
 
     if (telefone === "") {
-
         alert("Digite seu WhatsApp.");
-
+        document.getElementById("telefone").focus();
         return;
     }
-
 
     if (endereco === "") {
-
         alert("Digite seu endereço.");
-
+        document.getElementById("endereco").focus();
         return;
     }
-
 
     let produtos = "";
 
-
     pedido.forEach(function(item) {
 
+        const subtotal =
+            item.preco * item.quantidade;
+
         produtos +=
+            item.quantidade +
+            "x " +
             item.nome +
             " - R$ " +
-            item.preco.toFixed(2).replace(".", ",") +
+            subtotal.toFixed(2).replace(".", ",") +
             "\n";
-
     });
 
+    const total = calcularTotal();
 
-    let mensagem =
-
+    const mensagem =
         "Olá! Quero fazer um pedido.\n\n" +
-
         "🍔 PRODUTOS:\n" +
-
         produtos +
-
-        "\n💰 Total: R$ " +
-
+        "\n💰 TOTAL: R$ " +
         total.toFixed(2).replace(".", ",") +
-
         "\n\n👤 Nome: " +
-
         nome +
-
         "\n📱 WhatsApp: " +
-
         telefone +
-
         "\n📍 Endereço: " +
-
         endereco +
-
         "\n💳 Pagamento: " +
-
         pagamento +
-
         "\n📝 Observação: " +
-
         (observacao || "Nenhuma");
 
-
-    /*
-        COLOQUE AQUI O WHATSAPP
-        DO RESTAURANTE.
-
-        Exemplo:
-
-        (53) 99999-9999
-
-        ficará:
-
-        5553999999999
-    */
-
+    // COLOQUE O WHATSAPP DO RESTAURANTE AQUI
     const numero = "5553999999999";
-
 
     const url =
         "https://wa.me/" +
@@ -173,8 +190,14 @@ function enviarPedido() {
         "?text=" +
         encodeURIComponent(mensagem);
 
-
     window.open(url, "_blank");
-
 }
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+        atualizarPedido();
+    }
+);
 ```
