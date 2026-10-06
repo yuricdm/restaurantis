@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,7 +13,9 @@ body {
 }
 
 
-/* MENU */
+/* =========================
+   MENU
+========================= */
 
 header {
     background: #d35400;
@@ -42,7 +45,9 @@ nav a:hover {
 }
 
 
-/* INÍCIO */
+/* =========================
+   INÍCIO
+========================= */
 
 .inicio {
     text-align: center;
@@ -63,7 +68,9 @@ nav a:hover {
 }
 
 
-/* BOTÃO */
+/* =========================
+   BOTÃO
+========================= */
 
 .botao {
     background: #d35400;
@@ -83,7 +90,9 @@ nav a:hover {
 }
 
 
-/* SEÇÕES */
+/* =========================
+   SEÇÕES
+========================= */
 
 section {
     padding: 60px 8%;
@@ -96,7 +105,9 @@ section h2 {
 }
 
 
-/* CARDÁPIO */
+/* =========================
+   CARDÁPIO
+========================= */
 
 .cardapio {
     display: flex;
@@ -113,6 +124,18 @@ section h2 {
     border-radius: 10px;
     box-shadow: 0 3px 10px #ddd;
     text-align: center;
+}
+
+
+/* IMAGENS DOS PRODUTOS */
+
+.imagem-produto {
+    width: 150px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 10px;
 }
 
 
@@ -139,7 +162,9 @@ section h2 {
 }
 
 
-/* PEDIDO */
+/* =========================
+   PEDIDO
+========================= */
 
 .pedido {
     max-width: 500px;
@@ -182,7 +207,9 @@ label {
 }
 
 
-/* CONTATO */
+/* =========================
+   CONTATO
+========================= */
 
 .contato {
     text-align: center;
@@ -190,7 +217,9 @@ label {
 }
 
 
-/* RODAPÉ */
+/* =========================
+   RODAPÉ
+========================= */
 
 footer {
     background: #333;
@@ -200,7 +229,9 @@ footer {
 }
 
 
-/* RESPONSIVO */
+/* =========================
+   RESPONSIVO
+========================= */
 
 @media (max-width: 600px) {
 
@@ -232,6 +263,14 @@ footer {
     .produto {
         width: 100%;
         max-width: 320px;
+    }
+
+
+    /* Imagens continuam padronizadas no celular */
+
+    .imagem-produto {
+        width: 150px;
+        height: 120px;
     }
 
 }
