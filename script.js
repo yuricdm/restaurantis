@@ -1,110 +1,46 @@
-
+```javascript
 let pedido = [];
 
 function adicionar(nome, preco) {
-
-    const produtoExistente = pedido.find(
-        item => item.nome === nome
-    );
-
-    if (produtoExistente) {
-        produtoExistente.quantidade++;
-    } else {
-        pedido.push({
-            nome: nome,
-            preco: preco,
-            quantidade: 1
-        });
-    }
-
-    atualizarPedido();
-}
-
-
-function remover(nome) {
-
-    const produto = pedido.find(
-        item => item.nome === nome
-    );
-
-    if (!produto) {
-        return;
-    }
-
-    produto.quantidade--;
-
-    if (produto.quantidade <= 0) {
-        pedido = pedido.filter(
-            item => item.nome !== nome
-        );
-    }
-
-    atualizarPedido();
-}
-
-
-function calcularTotal() {
-
-    let total = 0;
-
-    pedido.forEach(function(item) {
-        total += item.preco * item.quantidade;
+    pedido.push({
+        nome: nome,
+        preco: preco
     });
 
-    return total;
+    atualizarPedido();
 }
 
-
 function atualizarPedido() {
-
     const lista = document.getElementById("lista");
-    const totalElemento = document.getElementById("total");
+    const total = document.getElementById("total");
 
     lista.innerHTML = "";
 
-    if (pedido.length === 0) {
+    let valorTotal = 0;
 
-        lista.innerHTML = "Nenhum produto adicionado.";
-        totalElemento.innerText = "0,00";
+    pedido.forEach(function(item, index) {
 
-        return;
-    }
+        valorTotal += item.preco;
 
-    pedido.forEach(function(item) {
-
-        const subtotal =
-            item.preco * item.quantidade;
-
-        const div = document.createElement("div");
-
-        div.classList.add("item-pedido");
-
-        div.innerHTML = `
-            <strong>${item.nome}</strong>
-            <br>
-            Quantidade: ${item.quantidade}
-            <br>
-            R$ ${subtotal.toFixed(2).replace(".", ",")}
-            <br>
-
-            <button
-                class="botao-remover"
-                onclick="remover('${item.nome}')">
-                − Remover
-            </button>
-
-            <hr>
+        lista.innerHTML += `
+            <div class="item-pedido">
+                ${item.nome} - R$ ${item.preco.toFixed(2).replace(".", ",")}
+                <button onclick="remover(${index})">Remover</button>
+            </div>
         `;
-
-        lista.appendChild(div);
     });
 
-    const total = calcularTotal();
+    if (pedido.length === 0) {
+        lista.innerHTML = "Nenhum produto adicionado.";
+    }
 
-    totalElemento.innerText =
-        total.toFixed(2).replace(".", ",");
+    total.innerText = valorTotal.toFixed(2).replace(".", ",");
 }
 
+function remover(index) {
+    pedido.splice(index, 1);
+    atualizarPedido();
+}
 
 function enviarPedido() {
 
@@ -113,91 +49,53 @@ function enviarPedido() {
         return;
     }
 
-    const nome =
-        document.getElementById("nome").value.trim();
+    const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
+    const endereco = document.getElementById("endereco").value;
+    const pagamento = document.getElementById("pagamento").value;
+    const observacao = document.getElementById("observacao").value;
 
-    const telefone =
-        document.getElementById("telefone").value.trim();
-
-    const endereco =
-        document.getElementById("endereco").value.trim();
-
-    const pagamento =
-        document.getElementById("pagamento").value;
-
-    const observacao =
-        document.getElementById("observacao").value.trim();
-
-    if (nome === "") {
-        alert("Digite seu nome.");
-        document.getElementById("nome").focus();
+    if (nome === "" || telefone === "" || endereco === "") {
+        alert("Preencha nome, telefone e endereço.");
         return;
     }
 
-    if (telefone === "") {
-        alert("Digite seu WhatsApp.");
-        document.getElementById("telefone").focus();
-        return;
-    }
+    let mensagem = "Olá! Quero fazer um pedido.%0A%0A";
 
-    if (endereco === "") {
-        alert("Digite seu endereço.");
-        document.getElementById("endereco").focus();
-        return;
-    }
+    mensagem += "🍔 PEDIDO:%0A";
 
-    let produtos = "";
+    let total = 0;
 
     pedido.forEach(function(item) {
 
-        const subtotal =
-            item.preco * item.quantidade;
-
-        produtos +=
-            item.quantidade +
-            "x " +
+        mensagem +=
+            "• " +
             item.nome +
             " - R$ " +
-            subtotal.toFixed(2).replace(".", ",") +
-            "\n";
+            item.preco.toFixed(2).replace(".", ",") +
+            "%0A";
+
+        total += item.preco;
     });
 
-    const total = calcularTotal();
-
-    const mensagem =
-        "Olá! Quero fazer um pedido.\n\n" +
-        "🍔 PRODUTOS:\n" +
-        produtos +
-        "\n💰 TOTAL: R$ " +
+    mensagem +=
+        "%0A💰 Total: R$ " +
         total.toFixed(2).replace(".", ",") +
-        "\n\n👤 Nome: " +
-        nome +
-        "\n📱 WhatsApp: " +
-        telefone +
-        "\n📍 Endereço: " +
-        endereco +
-        "\n💳 Pagamento: " +
-        pagamento +
-        "\n📝 Observação: " +
-        (observacao || "Nenhuma");
+        "%0A%0A";
 
-    // COLOQUE O WHATSAPP DO RESTAURANTE AQUI
+    mensagem += "👤 Nome: " + nome + "%0A";
+    mensagem += "📱 Telefone: " + telefone + "%0A";
+    mensagem += "📍 Endereço: " + endereco + "%0A";
+    mensagem += "💳 Pagamento: " + pagamento + "%0A";
+    mensagem += "📝 Observação: " + observacao;
+
     const numero = "5553999999999";
 
-    const url =
-        "https://wa.me/" +
-        numero +
-        "?text=" +
-        encodeURIComponent(mensagem);
-
-    window.open(url, "_blank");
+    window.open(
+        "https://wa.me/" + numero + "?text=" + mensagem,
+        "_blank"
+    );
 }
 
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-        atualizarPedido();
-    }
-);
+atualizarPedido();
 ```
