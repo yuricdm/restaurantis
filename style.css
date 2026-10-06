@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8f0;
+    color: #333;
+}
+
+
+/* MENU */
+
+header {
+    background: #d35400;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+header h2 {
+    margin: 0;
+}
+
+
+nav a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* INÍCIO */
+
+.inicio {
+    text-align: center;
+    padding: 80px 20px;
+    background: #ffe0b2;
+}
+
+
+.inicio h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+
+.inicio p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+
+/* BOTÃO */
+
+.botao {
+    background: #d35400;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+
+.botao:hover {
+    background: #a94000;
+    transform: scale(1.03);
+}
+
+
+/* SEÇÕES */
+
+section {
+    padding: 60px 8%;
+}
+
+
+section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* CARDÁPIO */
+
+.cardapio {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.produto {
+    background: white;
+    width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #ddd;
+    text-align: center;
+}
+
+
+.produto h3 {
+    margin: 10px;
+}
+
+
+.produto p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+
+.emoji {
+    font-size: 60px;
+}
+
+
+.preco {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+/* PEDIDO */
+
+.pedido {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+
+#lista {
+    background: #fff8f0;
+    padding: 15px;
+    border-radius: 8px;
+    line-height: 1.8;
+}
+
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+label {
+    font-weight: bold;
+}
+
+
+/* CONTATO */
+
+.contato {
+    text-align: center;
+    line-height: 1.5;
+}
+
+
+/* RODAPÉ */
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    nav a {
+        margin-left: 0;
+    }
+
+
+    .inicio h1 {
+        font-size: 35px;
+    }
+
+
+    .produto {
+        width: 100%;
+        max-width: 320px;
+    }
+
+}
+```
