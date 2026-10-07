@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <!-- MENU -->
     <header>
         <h2>IsmarFood</h2>
@@ -24,43 +23,31 @@
         </nav>
     </header>
 
-
     <!-- INÍCIO -->
     <section id="inicio" class="inicio">
-
         <h1>Bem-vindo!</h1>
-
         <p>
             Comida deliciosa feita especialmente para você.
         </p>
-
         <a href="#cardapio">
             <button class="botao">
                 Ver Cardápio
             </button>
         </a>
-
     </section>
-
 
     <!-- CARDÁPIO -->
     <section id="cardapio">
-
         <h2>🍔 Nosso Cardápio</h2>
-
         <div class="cardapio">
 
             <!-- X-BURGER -->
             <div class="produto">
-
                 <img src="img/xburger.jpg" alt="X-Burger" class="imagem-produto">
-
                 <h3>X-Burger</h3>
-
                 <p>
                     Hambúrguer, queijo e salada.
                 </p>
-
                 <div class="preco">
                     R$ 25,00
                 </div>
@@ -70,109 +57,78 @@
                     onclick="adicionar('X-Burger', 25)">
                     Adicionar
                 </button>
-
             </div>
-
 
             <!-- BATATA -->
             <div class="produto">
-
                 <img src="img/batata.jpg" alt="Batata Frita" class="imagem-produto">
-
                 <h3>Batata Frita</h3>
-
                 <p>
-                    Porção de batata crocante.
+                    Porção de batata frita crocante.
                 </p>
-
                 <div class="preco">
                     R$ 15,00
                 </div>
-
                 <button
                     class="botao"
                     onclick="adicionar('Batata Frita', 15)">
                     Adicionar
                 </button>
-
             </div>
-
 
             <!-- REFRIGERANTE -->
             <div class="produto">
-
                 <img src="img/refrigerante.jpg" alt="Refrigerante" class="imagem-produto">
-
                 <h3>Refrigerante</h3>
-
                 <p>
                     Lata 350ml.
                 </p>
-
                 <div class="preco">
                     R$ 6,00
                 </div>
-
                 <button
                     class="botao"
                     onclick="adicionar('Refrigerante', 6)">
                     Adicionar
                 </button>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- PEDIDO -->
     <section id="pedido">
 
         <h2>🛒 Meu Pedido</h2>
-
         <div class="pedido">
-
             <div id="lista">
                 Nenhum produto adicionado.
             </div>
-
             <br>
-
             <strong>
                 Total:
                 R$ <span id="total">0,00</span>
             </strong>
-
             <br><br>
 
-
             <label for="nome">Nome</label>
-
             <input
                 type="text"
                 id="nome"
                 placeholder="Seu nome">
 
-
             <label for="telefone">WhatsApp</label>
-
             <input
                 type="tel"
                 id="telefone"
                 placeholder="Seu WhatsApp">
 
-
             <label for="endereco">Endereço</label>
-
             <input
                 type="text"
                 id="endereco"
                 placeholder="Seu endereço">
 
-
-            <label for="pagamento">Forma de pagamento</label>
-
+            <label for="pagamento">Selecione a forma de pagamento</label>
             <select id="pagamento">
 
                 <option value="Pix">
@@ -189,7 +145,6 @@
 
             </select>
 
-
             <label for="observacao">Observações</label>
 
             <textarea
@@ -197,56 +152,37 @@
                 placeholder="Observações">
             </textarea>
 
-
             <button
                 class="botao"
                 onclick="enviarPedido()">
-
                 📱 Enviar Pedido
 
             </button>
-
         </div>
-
     </section>
-
 
     <!-- CONTATO -->
     <section id="contato">
-
         <h2>📞 Contato</h2>
-
         <p class="contato">
-
             📍 Praça 20 de Setembro, 455 - Centro, Pelotas - RS 
-
             <br><br>
 
             📱 (53) 4002-8922
-
             <br><br>
-
             🕐 Terça a domingo - 18h às 23h
-
         </p>
-
     </section>
-
 
     <!-- RODAPÉ -->
     <footer>
-
         <p>
-            © 2026 IsmarFood
+            © IsmarFood 2026
         </p>
-
     </footer>
-
 
     <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
-
 </html>
-```
