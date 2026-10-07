@@ -107,7 +107,6 @@ function enviarPedido() {
     window.open(url, "_blank");
 }
 
-
 // Aguarda o HTML carregar antes de atualizar o pedido
 document.addEventListener("DOMContentLoaded", function() {
     atualizarPedido();
