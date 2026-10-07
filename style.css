@@ -1,17 +1,14 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-
 body {
     font-family: Arial, sans-serif;
     background: #fff8f0;
     color: #333;
 }
-
 
 /* =========================
    MENU
@@ -26,11 +23,9 @@ header {
     align-items: center;
 }
 
-
 header h2 {
     margin: 0;
 }
-
 
 nav a {
     color: white;
@@ -39,11 +34,9 @@ nav a {
     font-weight: bold;
 }
 
-
 nav a:hover {
     text-decoration: underline;
 }
-
 
 /* =========================
    INÍCIO
@@ -55,18 +48,15 @@ nav a:hover {
     background: #ffe0b2;
 }
 
-
 .inicio h1 {
     font-size: 45px;
     margin-bottom: 15px;
 }
 
-
 .inicio p {
     font-size: 18px;
     margin-bottom: 25px;
 }
-
 
 /* =========================
    BOTÃO
@@ -83,12 +73,10 @@ nav a:hover {
     transition: 0.3s;
 }
 
-
 .botao:hover {
     background: #a94000;
     transform: scale(1.03);
 }
-
 
 /* =========================
    SEÇÕES
@@ -97,7 +85,6 @@ nav a:hover {
 section {
     padding: 60px 8%;
 }
-
 
 section h2 {
     text-align: center;
@@ -116,7 +103,6 @@ section h2 {
     justify-content: center;
 }
 
-
 .produto {
     background: white;
     width: 250px;
@@ -125,7 +111,6 @@ section h2 {
     box-shadow: 0 3px 10px #ddd;
     text-align: center;
 }
-
 
 /* IMAGENS DOS PRODUTOS */
 
@@ -138,29 +123,24 @@ section h2 {
     margin: 0 auto 10px;
 }
 
-
 .produto h3 {
     margin: 10px;
 }
-
 
 .produto p {
     color: #666;
     margin-bottom: 15px;
 }
 
-
 .emoji {
     font-size: 60px;
 }
-
 
 .preco {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 15px;
 }
-
 
 /* =========================
    PEDIDO
@@ -173,8 +153,8 @@ section h2 {
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 3px 10px #ddd;
+    text-align: center;
 }
-
 
 #lista {
     background: #fff8f0;
@@ -182,7 +162,6 @@ section h2 {
     border-radius: 8px;
     line-height: 1.8;
 }
-
 
 input,
 textarea,
@@ -195,17 +174,14 @@ select {
     font-family: Arial, sans-serif;
 }
 
-
 textarea {
     min-height: 100px;
     resize: vertical;
 }
 
-
 label {
     font-weight: bold;
 }
-
 
 /* =========================
    CONTATO
@@ -215,7 +191,6 @@ label {
     text-align: center;
     line-height: 1.5;
 }
-
 
 /* =========================
    RODAPÉ
@@ -227,7 +202,6 @@ footer {
     text-align: center;
     padding: 30px;
 }
-
 
 /* =========================
    RESPONSIVO
@@ -241,7 +215,6 @@ footer {
         text-align: center;
     }
 
-
     nav {
         display: flex;
         flex-wrap: wrap;
@@ -249,22 +222,18 @@ footer {
         gap: 10px;
     }
 
-
     nav a {
         margin-left: 0;
     }
-
 
     .inicio h1 {
         font-size: 35px;
     }
 
-
     .produto {
         width: 100%;
         max-width: 320px;
     }
-
 
     /* Imagens continuam padronizadas no celular */
 
@@ -274,4 +243,3 @@ footer {
     }
 
 }
-```
