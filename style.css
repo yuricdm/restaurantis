@@ -38,9 +38,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* =========================
-   INÍCIO
-========================= */
+/* INÍCIO */
 
 .inicio {
     text-align: center;
@@ -58,9 +56,7 @@ nav a:hover {
     margin-bottom: 25px;
 }
 
-/* =========================
-   BOTÃO
-========================= */
+/* BOTÃO */
 
 .botao {
     background: #d35400;
@@ -78,9 +74,7 @@ nav a:hover {
     transform: scale(1.03);
 }
 
-/* =========================
-   SEÇÕES
-========================= */
+/* SEÇÕES */
 
 section {
     padding: 60px 8%;
@@ -92,9 +86,7 @@ section h2 {
 }
 
 
-/* =========================
-   CARDÁPIO
-========================= */
+/* CARDÁPIO */
 
 .cardapio {
     display: flex;
@@ -142,9 +134,7 @@ section h2 {
     margin-bottom: 15px;
 }
 
-/* =========================
-   PEDIDO
-========================= */
+/* PEDIDO */
 
 .pedido {
     max-width: 500px;
@@ -182,18 +172,14 @@ label {
     font-weight: bold;
 }
 
-/* =========================
-   CONTATO
-========================= */
+/* CONTATO */
 
 .contato {
     text-align: center;
     line-height: 1.5;
 }
 
-/* =========================
-   RODAPÉ
-========================= */
+/* RODAPÉ */
 
 footer {
     background: #333;
@@ -202,9 +188,7 @@ footer {
     padding: 30px;
 }
 
-/* =========================
-   RESPONSIVO
-========================= */
+/* RESPONSIVO */
 
 @media (max-width: 600px) {
 
@@ -234,7 +218,7 @@ footer {
         max-width: 320px;
     }
 
-    /* Imagens continuam padronizadas no celular */
+    /* Imagens padronizadas p celular */
 
     .imagem-produto {
         width: 150px;
