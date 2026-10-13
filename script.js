@@ -69,7 +69,7 @@ function enviarPedido() {
 
     let mensagem = "Olá! Quero fazer um pedido.\n\n";
 
-    mensagem += "🍔 PEDIDO:\n";
+    mensagem += " PEDIDO:\n";
 
     let total = 0;
 
@@ -90,11 +90,11 @@ function enviarPedido() {
         total.toFixed(2).replace(".", ",") +
         "\n\n";
 
-    mensagem += "👤 Nome: " + nome + "\n";
-    mensagem += "📱 Telefone: " + telefone + "\n";
-    mensagem += "📍 Endereço: " + endereco + "\n";
-    mensagem += "💳 Pagamento: " + pagamento + "\n";
-    mensagem += "📝 Observação: " + (observacao || "Nenhuma");
+    mensagem += " Nome: " + nome + "\n";
+    mensagem += " Telefone: " + telefone + "\n";
+    mensagem += " Endereço: " + endereco + "\n";
+    mensagem += " Pagamento: " + pagamento + "\n";
+    mensagem += " Observação: " + (observacao || "Nenhuma");
 
     const numero = "5553999999999";
 
